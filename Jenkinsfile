@@ -13,6 +13,7 @@ pipeline{
                 
             }
             steps{
+                sh 'sudo chown -R 112:117 "/.npm"'
                 sh 'npm install'
                 sh 'npm build'
             }
