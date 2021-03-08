@@ -13,7 +13,7 @@ pipeline{
                 
             }
             steps{
-                sh 'chown -R jenkins /usr/local/lib/node_modules'
+                sh 'chown -R vagrant /usr/local/lib/node_modules'
                 sh 'npm install'
                 sh 'npm build'
             }
