@@ -13,6 +13,7 @@ pipeline{
                 
             }
             steps{
+                sh 'mkdir /.npm'
                 sh 'chown -R 112:117 "/.npm"'
                 sh 'npm install'
                 sh 'npm build'
