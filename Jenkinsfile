@@ -24,7 +24,7 @@ pipeline{
                     docker {image 'maven:3.6.3-adoptopenjdk-8'}
                 }
             steps{
-                sh 'sudo mvn package'
+                sh 'mvn package'
                 archiveArtifacts artifacts: 'target/*.war', followSymlinks: false
             }
             
