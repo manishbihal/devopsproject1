@@ -7,18 +7,18 @@ pipeline{
                 checkout scm
             }
         }
-        stage('Build FrontEnd'){
-            agent {
-                docker { image 'node:current-alpine3.13'}
+        // stage('Build FrontEnd'){
+        //     agent {
+        //         docker { image 'node:current-alpine3.13'}
                 
-            }
-            steps{
-                sh 'chown -R $USER /.npm'
-                sh 'npm install'
-                sh 'npm build'
-            }
+        //     }
+        //     steps{
+        //         sh 'chown -R $USER /.npm'
+        //         sh 'npm install'
+        //         sh 'npm build'
+        //     }
 
-        }
+        // }
         stage('Build BackEnd'){
             agent{
                     docker {image 'maven:3.6.3-adoptopenjdk-8'}
