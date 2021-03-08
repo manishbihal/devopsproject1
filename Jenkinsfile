@@ -13,7 +13,7 @@ pipeline{
                 
             }
             steps{
-                sh 'chown -R $USER /usr/local/lib/node_modules'
+                sh 'chown -R $USER /.npm'
                 sh 'npm install'
                 sh 'npm build'
             }
