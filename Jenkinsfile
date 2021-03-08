@@ -23,7 +23,7 @@ pipeline{
                     docker {image 'maven:3.6-adoptopenjdk-8'}
                 }
             steps{
-                sh 'mvn package'
+                sh './mvnw -Pprod,war clean verify'
                 archiveArtifacts artifacts: 'target/*.war', followSymlinks: false
             }
             
