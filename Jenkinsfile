@@ -13,7 +13,7 @@ pipeline{
                 
             }
             steps{
-                sh 'chown -R $USER /.npm'
+                sh 'chmod 777 /.npm'
                 sh 'npm install'
                 sh 'npm build'
             }
