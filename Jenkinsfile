@@ -20,10 +20,11 @@ pipeline{
         }
         stage('Build BackEnd'){
             agent{
-                    docker {image 'maven:3.6-adoptopenjdk-8'}
+                    docker {image 'docker pull maven:3.6-adoptopenjdk-8'}
                 }
             steps{
-                sh './mvnw -Pprod,war clean verify'
+                sh 'chown -R $USER /usr/local/'
+                sh 'mvn package'
                 archiveArtifacts artifacts: 'target/*.war', followSymlinks: false
             }
             
