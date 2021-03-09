@@ -20,7 +20,7 @@ pipeline{
         }
         stage('Build BackEnd'){
             agent{
-                    docker {image 'docker pull maven:3.6-adoptopenjdk-8'}
+                    docker {image 'maven:3.6-adoptopenjdk-8'}
                 }
             steps{
                 sh 'chown -R $USER /usr/local/'
