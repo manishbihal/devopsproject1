@@ -1,6 +1,11 @@
 pipeline{
-    agent any
-
+    agent {
+        label 'node1'
+    }
+    tools {
+       jdk 'jdk8'
+       maven 'maven3'
+    }
     stages{
         stage('Checkout SCM'){
             steps{
@@ -8,24 +13,17 @@ pipeline{
             }
         }
         stage('Build FrontEnd'){
-            agent {
-                docker { image 'node:current-alpine3.13'}
-                
-            }
             steps{
+                //sh './mvnw'
                 sh 'npm install'
                 sh 'npm build'
             }
 
         }
         stage('Build BackEnd'){
-            agent{
-                    docker {image 'maven:3.6-adoptopenjdk-8'}
-                }
             steps{
-                sh 'chown -R $USER /usr/local/'
                 sh 'mvn package'
-                archiveArtifacts artifacts: 'target/*.war', followSymlinks: false
+                archiveArtifacts artifacts: 'target/*.jar', followSymlinks: false
             }
             
         }
