@@ -15,7 +15,6 @@ pipeline{
         stage('Build FrontEnd'){
             steps{
                 //sh './mvnw'
-                sh 'sudo chown -R $(whoami) ~/.npm'
                 sh 'npm install'
                 sh 'npm build'
             }
